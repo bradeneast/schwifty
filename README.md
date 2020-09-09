@@ -21,7 +21,7 @@ new Schwifty();
 - Type: `function`
 - Default: `null`
 
-This is the callback that runs when a new page is rendered. Use it to re-run javascript on each page load.
+This is the callback that runs when a new page is rendered. Use it to re-run Javascript on each page load.
 
 ```javascript
 function doStuff() {

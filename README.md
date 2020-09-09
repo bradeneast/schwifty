@@ -3,7 +3,7 @@
 
 
 ## How it works
-Schwifty preloads and caches same-origin HTML documents, using an asynchronous request.
+Schwifty preloads and caches same-origin HTML documents, using an asynchronous XHTTP request.
 
 
 ## Usage
@@ -57,19 +57,19 @@ This is the selector passed to `document.querySelectorAll`, which returns valid 
 - Type: `number`
 - Default: `85`
 
-This is the maximum number of pages allowed to be preloaded in the cache. Once the limit is reached, Schwifty dumps the oldest entries as new documents are preloaded.
+This is the maximum number of pages Schwifty will preload before the cache is "full". When new pages are added to the cache, the oldest entries will be dumped to make room.
 
 
 ### options.preserveScroll
 - Type: `boolean`
 - Default: `false`
 
-This tells Schwifty whether or not to preserve the scroll position on page load.
+This tells Schwifty whether or not to preserve the scroll position upon loading a page.
 
 
 ### options.preserveAttributes
 - Type: `boolean` or `object`
-- Default: `null`
+- Default: `false`
 
 This tells Schwifty whether or not to preserve attributes on top-level DOM elements (`documentElement`, `head`, and `body`).
 
@@ -105,4 +105,7 @@ transitioningAttribute: 'data-isTransitioning'
 ```
 
 ## Known issues
-- The desktop and iOS versionos of Firefox prerender Reader View once a page is navigated. Schwifty isn't
+- ### iOS Safari (and other browsers running on top of it) won't always re-render Reader View when navigation occurs.
+  Schwifty emits only the standard events that occur on a page load, which usually don't trigger iOS Safari to update the content in Reader View. This can lead to a user tapping Reader View on one page, only to see the content from a page they had visited previously. The proper content is rendered only after refreshing.
+
+	Until more is known about what triggers Reader View updates, I've put a pin in trying to debug this issue.

@@ -1,6 +1,7 @@
+<img width="480" alt="The Schwifty.js Logo" src="/logo.png" />
+
 # Schwifty.js
 > Instant page loads for static sites.
-
 
 ## How it works
 Schwifty preloads and caches same-origin HTML documents, using an asynchronous XHTTP request.

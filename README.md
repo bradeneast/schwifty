@@ -1,4 +1,4 @@
-<img width="480" alt="The Schwifty.js Logo" src="/logo.png" />
+![The Schwifty.js Logo](/logo.png)
 
 # Schwifty.js
 > Instant page loads for static sites.

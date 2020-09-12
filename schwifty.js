@@ -1,16 +1,16 @@
 /**
- * Schwfity.js preloads and caches same-origin html documents for a native-app feeling on static sites
- * @param {} options
+ * Schwfity preloads and caches same-origin html documents for a native-app feeling on static sites.
+ * @param {any} options
 */
 export default class Schwifty {
 
 	constructor({
 		onload, // the callback(s) that run when a new page is rendered
-		selector = `a[href^="${window.location.origin}"]:not([data-no-schwifty]), a[href^="/"]:not([data-no-schwifty])`, // the DOM selector used to find preloadable links
+		selector = `a[href^='${window.location.origin}']:not([data-no-schwifty]), a[href^='/']:not([data-no-schwifty])`, // the DOM selector used to find preloadable links
 		cacheLimit = 85, // the maximum number of pages allowed to be preloaded in the cache
 		preserveScroll = false, // preserve scroll position on page load
 		transitioningAttribute = 'data-schwifty', // attribute updated on the `documentElement` during a page transition
-		preserveAttributes = false, // preserve attributes on top-level DOM elements (`documentElement`, `head`, and `body`)
+		preserveAttributes, // preserve attributes on top-level DOM elements (`documentElement`, `head`, and `body`)
 	} = {}) {
 
 
@@ -24,11 +24,10 @@ export default class Schwifty {
 			};
 		let preloadedClass = 'schwifty-preload';
 		let linkRelStylesheet = 'link[rel="stylesheet"]';
-		let cache = new Map();
-		// Minifies smaller when these values are stored in variables
 		let doc = document;
 		let html = doc.documentElement;
 		let innerHTML = 'innerHTML';
+		let cache = new Map();
 
 
 
@@ -78,7 +77,7 @@ export default class Schwifty {
 				if (this.status == 200) cache.set(href, xhttp.responseXML);
 			}
 
-			xhttp.open("GET", href, true);
+			xhttp.open('GET', href, true);
 			xhttp.responseType = 'document';
 			xhttp.send();
 		}
@@ -145,7 +144,6 @@ export default class Schwifty {
 			dispatch('unload');
 			setTimeout(
 				() => {
-					dispatch('loading', doc);
 
 					// Replace Content
 					doc.body[innerHTML] = preloaded.body[innerHTML];
@@ -153,8 +151,7 @@ export default class Schwifty {
 					html.setAttribute(transitioningAttribute, 'in');
 
 					// Dispatch some events
-					dispatch('interactive', doc);
-					dispatch("DOMContentLoaded", doc);
+					dispatch('DOMContentLoaded', doc);
 
 					// Callbacks
 					if (!preserveScroll) scrollTo(0, 0);
@@ -170,7 +167,6 @@ export default class Schwifty {
 					);
 
 					// Dispatch some more events
-					dispatch('complete', doc);
 					dispatch('load');
 					dispatch('pageshow');
 
@@ -181,7 +177,7 @@ export default class Schwifty {
 
 		// Listen + Observe
 		observeTargets();
-		addEventListener('popstate', event => load(location.href));
+		addEventListener('popstate', () => load(location.href));
 		addEventListener('click', event => {
 			let href = anchor(event).href;
 			if (href) {

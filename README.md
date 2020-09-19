@@ -1,7 +1,9 @@
 ![The Schwifty.js Logo](/logo.png)
 
 # Schwifty.js
+
 > Instant page loads for static sites.
+
 
 ## How it works
 Schwifty preloads and caches same-origin HTML documents, using an asynchronous XHTTP request.
@@ -106,7 +108,8 @@ transitioningAttribute: 'data-isTransitioning'
 ```
 
 ## Known issues
-- ### iOS Safari (and other browsers running on top of it) won't always re-render Reader View when navigation occurs.
-  Schwifty emits only the standard events that occur on a page load, which usually don't trigger iOS Safari to update the content in Reader View. This can lead to a user tapping Reader View on one page, only to see the content from a page they had visited previously. The proper content is rendered only after refreshing.
 
-	Until more is known about what triggers Reader View updates, I've put a pin in trying to debug this issue.
+### iOS Safari (and other browsers running on top of it) won't always re-render Reader View when navigation occurs.
+Schwifty emits only the standard events that occur on a page load, which usually don't trigger iOS Safari to update the content in Reader View. This can lead to a user tapping Reader View on one page, only to see the content from a page they had visited previously. The proper content is rendered only after refreshing.
+
+Until more is known about what triggers Reader View updates, I've put a pin in trying to debug this issue.

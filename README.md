@@ -1,4 +1,4 @@
-![The Schwifty.js Logo](/logo.png)
+![The Schwifty.js Logo](/logo.svg)
 
 # Schwifty.js
 

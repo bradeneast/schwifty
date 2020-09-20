@@ -1,6 +1,6 @@
 {
   "name": "schwifty.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An ultra-light and ultra-fast page loader for static sites.",
   "main": "schwifty.js",
   "repository": {
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/bradeneast/schwifty/issues"
   },
-  "homepage": "https://github.com/bradeneast/schwifty#readme"
+  "homepage": "https://github.com/bradeneast/schwifty#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }

@@ -18,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/bradeneast/schwifty/issues"
   },
-  "homepage": "https://github.com/bradeneast/schwifty#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  }
+  "homepage": "https://github.com/bradeneast/schwifty#readme"
 }

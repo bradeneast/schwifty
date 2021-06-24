@@ -21,7 +21,7 @@ export default class Schwifty {
 
 
 		// Global variables
-		selector = selector || `a[href^='${window.location.origin}']:not([data-no-schwifty]), a[href^='/']:not([data-no-schwifty])`;
+		selector = selector || `a[href^='${window.location.origin}']:not([data-no-schwifty]):not([href^='//']), a[href^='/']:not([data-no-schwifty]):not([href^='//'])`;
 		cacheLimit = cacheLimit || 85;
 		transitioningAttribute = transitioningAttribute || 'data-schwifty';
 
